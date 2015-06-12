@@ -1,7 +1,7 @@
 class profile::nrpe {
   include ::nrpe
   
-  $profile_nrpe = hiera_hash('profile::nrpe',{})
+  $profile_nrpe = hiera('profile::nrpe',{})
   create_resources('nrpe::config',$profile_nrpe)
 
   $profile_nrpe_disks = hiera_hash('profile::nrpe_disks',{})
