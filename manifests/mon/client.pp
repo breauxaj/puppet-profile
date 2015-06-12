@@ -8,7 +8,7 @@ class profile::mon::client {
     server_address      => $profile_mon_client['server_address'],
     allowed_hosts       => $profile_mon_client['allowed_hosts'],
     server_port         => $profile_mon_client['server_port'],
-    command_timeout     => $profile_mod_client['command_timeout'],
+    command_timeout     => $profile_mon_client['command_timeout'],
     connection_timeout  => $profile_mon_client['connection_timeout'],
   }
 
