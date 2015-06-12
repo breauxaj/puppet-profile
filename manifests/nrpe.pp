@@ -25,7 +25,7 @@ class profile::nrpe {
   $profile_nrpe_procs = hiera_hash('profile::nrpe_procs',{})
   create_resources('nrpe::procs',$profile_nrpe_procs)
 
-  $profile_nrpe_service = hiera_hash('profile::nrpe_service',{})
+  $profile_nrpe_service = hiera('profile::nrpe_service',{})
   create_resources('nrpe::service',$profile_nrpe_service)
 
   $profile_nrpe_users = hiera_hash('profile::nrpe_users',{})
