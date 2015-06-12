@@ -8,7 +8,7 @@ class profile::nrpe {
     allowed_hosts       => $profile_nrpe['allowed_hosts'],
     server_port         => $profile_nrpe['server_port'],
     command_timeout     => $profile_nrpe['command_timeout'],
-    connection_timeout  => $profile_nrpe['connection_timeout],
+    connection_timeout  => $profile_nrpe['connection_timeout'],
   }
 
   $profile_nrpe_disks = hiera_hash('profile::nrpe_disks',{})
