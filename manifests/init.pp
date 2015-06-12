@@ -1,5 +1,3 @@
-class profile (
-  $label = 'undefined',
-) {
-
+class profile {
+  include profile::nrpe
 }
