@@ -2,7 +2,14 @@ class profile::nrpe {
   include ::nrpe
   
   $profile_nrpe = hiera('profile::nrpe',{})
-  create_resources('nrpe::config',$profile_nrpe)
+  
+  nrpe::config { 'default':
+    server_address      => $profile_nrpe['server_address'],
+    allowed_hosts       => $profile_nrpe['allowed_hosts'],
+    server_port         => $profile_nrpe['server_port'],
+    command_timeout     => $profile_nrpe['command_timeout'],
+    connection_timeout  => $profile_nrpe['connection_timeout],
+  }
 
   $profile_nrpe_disks = hiera_hash('profile::nrpe_disks',{})
   create_resources('nrpe::disks',$profile_nrpe_disks)
@@ -26,7 +33,11 @@ class profile::nrpe {
   create_resources('nrpe::procs',$profile_nrpe_procs)
 
   $profile_nrpe_service = hiera('profile::nrpe_service',{})
-  create_resources('nrpe::service',$profile_nrpe_service)
+  
+  nrpe::service { 'default':
+    ensure => $profile_nrpe_service['ensure'],
+    enable => $profile_nrpe_service['enable'],
+  }
 
   $profile_nrpe_users = hiera_hash('profile::nrpe_users',{})
   create_resources('nrpe::users',$profile_nrpe_users)
