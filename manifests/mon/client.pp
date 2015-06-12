@@ -12,6 +12,10 @@ class profile::mon::client {
     connection_timeout  => $profile_mon_client['connection_timeout'],
   }
 
+  nrpe::service { 'default':
+    ensure => $profile_mon_client['ensure'],
+  }
+
   $profile_mon_disks = hiera('profile::mon::disks',{})
   
   nrpe::disks { 'default':
@@ -49,6 +53,34 @@ class profile::mon::client {
   nrpe::load { 'default':
     warn_value => $profile_mon_load['warn_value'],
     crit_value => $profile_mon_load['crit_value'],
+  }
+
+  $profile_mon_mysql = hiera('profile::mon::mysql',{})
+
+  nrpe::mysql { 'default':
+    warn_value => $profile_mon_mysql['warn_value'],
+    crit_value => $profile_mon_mysql['crit_value'],
+  }
+
+  $profile_mon_procs = hiera('profile::mon::procs',{})
+
+  nrpe::procs { 'default':
+    warn_value => $profile_mon_procs['warn_value'],
+    crit_value => $profile_mon_procs['crit_value'],
+  }
+
+  $profile_mon_users = hiera('profile::mon::users',{})
+
+  nrpe::users { 'default':
+    warn_value => $profile_mon_users['warn_value'],
+    crit_value => $profile_mon_users['crit_value'],
+  }
+
+  $profile_mon_varnish = hiera('profile::mon::varnish',{})
+
+  nrpe::varnish { 'default':
+    warn_value => $profile_mon_varnish['warn_value'],
+    crit_value => $profile_mon_varnish['crit_value'],
   }
 
 }
