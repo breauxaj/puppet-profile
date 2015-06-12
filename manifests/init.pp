@@ -1,3 +1,5 @@
-class profile {
-  
+class profile (
+  $label = 'undefined',
+) {
+
 }
