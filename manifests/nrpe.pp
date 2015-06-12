@@ -11,8 +11,12 @@ class profile::nrpe {
     connection_timeout  => $profile_nrpe['connection_timeout'],
   }
 
-  $profile_nrpe_disks = hiera_hash('profile::nrpe_disks',{})
-  create_resources('nrpe::disks',$profile_nrpe_disks)
+  $profile_nrpe_disks = hiera('profile::nrpe_disks',{})
+  
+  nrpe::disks { 'default':
+    warn_value => $profile_nrpe_disks['warn_value'],
+    crit_value => $profile_nrpe_disks['crit_value'],
+  }
 
   $profile_nrpe_httpd = hiera_hash('profile::nrpe_httpd',{})
   create_resources('nrpe::httpd',$profile_nrpe_httpd)
