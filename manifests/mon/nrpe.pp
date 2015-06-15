@@ -34,7 +34,7 @@ class profile::mon::client {
 
   nrpe::java { 'default':
     warn_value => $profile_mon_java['warn_value'],
-    crit_value => $profile_mon_java['warn_value'],
+    crit_value => $profile_mon_java['crit_value'],
   }
 
   $profile_mon_ldap = hiera('profile::mon::ldap',undef)
@@ -45,7 +45,7 @@ class profile::mon::client {
     binddn     => $profile_mon_ldap['binddn'],
     pass       => $profile_mon_ldap['pass'],
     warn_value => $profile_mon_ldap['warn_value'],
-    crit_value => $profile_mon_ldap['warn_value'],
+    crit_value => $profile_mon_ldap['crit_value'],
   }
 
   $profile_mon_load = hiera('profile::mon::load',{})
