@@ -23,21 +23,21 @@ class profile::mon::client {
     crit_value => $profile_mon_disks['crit_value'],
   }
 
-  $profile_mon_httpd = hiera('profile::mon::httpd',{})
+  $profile_mon_httpd = hiera('profile::mon::httpd',undef)
   
   nrpe::httpd { 'default':
     warn_value => $profile_mon_httpd['warn_value'],
     crit_value => $profile_mon_httpd['crit_value'],
   }
 
-  $profile_mon_java = hiera('profile::mon::java',{})
+  $profile_mon_java = hiera('profile::mon::java',undef)
 
   nrpe::java { 'default':
     warn_value => $profile_mon_java['warn_value'],
     crit_value => $profile_mon_java['warn_value'],
   }
 
-  $profile_mon_ldap = hiera('profile::mon::ldap',{})
+  $profile_mon_ldap = hiera('profile::mon::ldap',undef)
   
   nrpe::ldap { 'default':
     host       => $profile_mon_ldap['host'],
@@ -55,7 +55,7 @@ class profile::mon::client {
     crit_value => $profile_mon_load['crit_value'],
   }
 
-  $profile_mon_mysql = hiera('profile::mon::mysql',{})
+  $profile_mon_mysql = hiera('profile::mon::mysql',undef)
 
   nrpe::mysql { 'default':
     warn_value => $profile_mon_mysql['warn_value'],
@@ -76,7 +76,7 @@ class profile::mon::client {
     crit_value => $profile_mon_users['crit_value'],
   }
 
-  $profile_mon_varnish = hiera('profile::mon::varnish',{})
+  $profile_mon_varnish = hiera('profile::mon::varnish',undef)
 
   nrpe::varnish { 'default':
     warn_value => $profile_mon_varnish['warn_value'],
