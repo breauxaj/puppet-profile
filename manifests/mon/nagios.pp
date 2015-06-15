@@ -1,4 +1,4 @@
-class profile::mon::server {
+class profile::mon::nagios {
   include ::nagios
   include ::nagios::plugins
 

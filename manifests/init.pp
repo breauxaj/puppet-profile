@@ -1,3 +1,4 @@
 class profile {
-  include profile::mon::client
+  include profile::mon::nrpe
+
 }

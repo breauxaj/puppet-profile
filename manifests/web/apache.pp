@@ -1,7 +1,7 @@
 class profile::web::apache {
   include ::nrpe
 
-  $profile_mon_httpd = hiera('profile::mon::httpd',undef)
+  $profile_mon_httpd = hiera('profile::mon::httpd',{})
   
   nrpe::httpd { 'default':
     warn_value => $profile_mon_httpd['warn_value'],
