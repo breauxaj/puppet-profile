@@ -23,7 +23,7 @@ class profile::mon::nrpe {
     crit_value => $profile_mon_disks['crit_value'],
   }
 
-  $profile_mon_ldap = hiera('profile::mon::ldap',undef)
+  $profile_mon_ldap = hiera('profile::mon::ldap',{})
   
   nrpe::ldap { 'default':
     host       => $profile_mon_ldap['host'],
