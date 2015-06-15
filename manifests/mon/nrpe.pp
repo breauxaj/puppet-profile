@@ -2,7 +2,7 @@ class profile::mon::nrpe {
   include ::nrpe
   include ::nrpe::plugins
 
-  $profile_mon_client = hiera('profile::mon::client',{})
+  $profile_mon_nrpe = hiera('profile::mon::nrpe',{})
   
   nrpe::config { 'default':
     server_address      => $profile_mon_client['server_address'],
@@ -13,7 +13,8 @@ class profile::mon::nrpe {
   }
 
   nrpe::service { 'default':
-    ensure => $profile_mon_client['ensure'],
+    ensure => $profile_mon_nrpe['ensure'],
+    enable => $profile_mon_nrpe['enable'],
   }
 
   $profile_mon_disks = hiera('profile::mon::disks',{})
