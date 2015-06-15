@@ -5,11 +5,11 @@ class profile::mon::nrpe {
   $profile_mon_nrpe = hiera('profile::mon::nrpe',{})
   
   nrpe::config { 'default':
-    server_address      => $profile_mon_client['server_address'],
-    allowed_hosts       => $profile_mon_client['allowed_hosts'],
-    server_port         => $profile_mon_client['server_port'],
-    command_timeout     => $profile_mon_client['command_timeout'],
-    connection_timeout  => $profile_mon_client['connection_timeout'],
+    server_address      => $profile_mon_nrpe['server_address'],
+    allowed_hosts       => $profile_mon_nrpe['allowed_hosts'],
+    server_port         => $profile_mon_nrpe['server_port'],
+    command_timeout     => $profile_mon_nrpe['command_timeout'],
+    connection_timeout  => $profile_mon_nrpe['connection_timeout'],
   }
 
   nrpe::service { 'default':
