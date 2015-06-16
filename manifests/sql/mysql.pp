@@ -7,5 +7,7 @@ class profile::sql::mysql {
     warn_value => $profile_mon_mysql['warn_value'],
     crit_value => $profile_mon_mysql['crit_value'],
   }
-
+  
+  hiera_include('profile::sql::mysql', '')
+  
 }

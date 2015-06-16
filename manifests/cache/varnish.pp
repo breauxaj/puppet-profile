@@ -8,4 +8,6 @@ class profile::cache::varnish {
     crit_value => $profile_mon_varnish['crit_value'],
   }
   
+  hiera_include('profile::cache::varnish', '')
+  
 }

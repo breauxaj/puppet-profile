@@ -8,4 +8,6 @@ class profile::web::apache {
     crit_value => $profile_mon_httpd['crit_value'],
   }
 
+  hiera_include('profile::web::apache', '')
+
 }
