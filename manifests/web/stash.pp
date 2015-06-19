@@ -8,4 +8,6 @@ class profile::web::stash {
     crit_value => $profile_mon_java['crit_value'],
   }
 
+  hiera_include('profile::web::stash', '')
+
 }

@@ -8,4 +8,6 @@ class profile::web::tomcat {
     crit_value => $profile_mon_java['crit_value'],
   }
 
+  hiera_include('profile::web::tomcat', '')
+
 }
