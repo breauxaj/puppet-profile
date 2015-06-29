@@ -10,7 +10,7 @@ class profile::web::apache {
 
   hiera_include('profile::web::apache', '')
 
-  $apache_header = hiera_hash('apache::header',{})
+  $apache_header = hiera_array('apache::header',{})
   create_resources('apache::header',$apache_header)
 
   $apache_sysconfig = hiera('apache::sysconfig',{})
