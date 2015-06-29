@@ -10,6 +10,8 @@ class profile::web::apache {
 
   hiera_include('profile::web::apache', '')
 
+  $apache_config = hiera('apache::config',{})
+
   $apache_header = hiera('apache::header',{})
 
   apache::header { 'default':
