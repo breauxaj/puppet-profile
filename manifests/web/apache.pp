@@ -13,8 +13,8 @@ class profile::web::apache {
   $apache_header = hiera('apache::header',{})
 
   apache::header { 'default':
-    $headers        => $apache_header['headers'],
-    $requestheaders => $apache_header['request_headers'],
+    headers        => $apache_header['headers'],
+    requestheaders => $apache_header['request_headers'],
   }
 
   $apache_sysconfig = hiera('apache::sysconfig',{})
