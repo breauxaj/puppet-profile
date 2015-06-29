@@ -10,4 +10,8 @@ class profile::web::apache {
 
   hiera_include('profile::web::apache', '')
 
+  $apache_header = hiera('apache::header',{})
+  create_resources('apache::header',$apache_header)
+
+
 }
