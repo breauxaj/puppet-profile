@@ -18,6 +18,12 @@ class profile::web::apache {
   }
 
   $apache_sysconfig = hiera('apache::sysconfig',{})
-  #create_resources('apache::sysconfig',$apache_sysconfig)
+
+  apache::sysconfig { 'default':
+    model   => $apache_sysconfig['model'],
+    options => $apache_sysconfig['options'],
+    lang    => $apache_sysconfig['lang'],
+    pidfile => $apache_sysconfig['pidfile'],
+  }
 
 }
