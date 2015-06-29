@@ -14,7 +14,7 @@ class profile::web::apache {
 
   apache::header { 'default':
     headers        => $apache_header['headers'],
-    requestheaders => $apache_header['request_headers'],
+    requestheaders => $apache_header['requestheaders'],
   }
 
   $apache_sysconfig = hiera('apache::sysconfig',{})
