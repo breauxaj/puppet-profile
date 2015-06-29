@@ -13,5 +13,7 @@ class profile::web::apache {
   $apache_header = hiera('apache::header',{})
   create_resources('apache::header',$apache_header)
 
+  $apache_sysconfig = hiera('apache::sysconfig',{})
+  create_resources('apache::sysconfig',$apache_sysconfig)
 
 }
