@@ -72,7 +72,7 @@ class profile::web::apache {
     pidfile => $apache_sysconfig['pidfile'],
   }
 
-  $apache_virtual = hiera('apache::virtual',{})
+  $apache_virtual = hiera_hash('apache::virtual',{})
   create_resources('apache::virtual',$apache_virtual)
   
 }
