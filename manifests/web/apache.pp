@@ -56,6 +56,13 @@ class profile::web::apache {
     requestheaders => $apache_header['requestheaders'],
   }
 
+  $apache_service = hiera('apache::service',{})
+
+  apache::service { 'default':
+    ensure => $apache_service['ensure'],
+    enable => $apache_service['enable'],
+  }
+
   $apache_sysconfig = hiera('apache::sysconfig',{})
 
   apache::sysconfig { 'default':
