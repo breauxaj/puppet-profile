@@ -1,59 +1,74 @@
 class profile::mon::nrpe {
-  include ::nrpe
-  include ::nrpe::plugins
+  hiera_include('profile::mon::nrpe', '')
 
-  $profile_mon_nrpe = hiera('profile::mon::nrpe',{})
+  $nrpe_config = hiera('nrpe::config',{})
   
   nrpe::config { 'default':
-    server_address      => $profile_mon_nrpe['server_address'],
-    allowed_hosts       => $profile_mon_nrpe['allowed_hosts'],
-    server_port         => $profile_mon_nrpe['server_port'],
-    command_timeout     => $profile_mon_nrpe['command_timeout'],
-    connection_timeout  => $profile_mon_nrpe['connection_timeout'],
+    server_address      => $nrpe_config['server_address'],
+    allowed_hosts       => $nrpe_config['allowed_hosts'],
+    server_port         => $nrpe_config['server_port'],
+    command_timeout     => $nrpe_config['command_timeout'],
+    connection_timeout  => $nrpe_config['connection_timeout'],
   }
 
-  nrpe::service { 'default':
-    ensure => $profile_mon_nrpe['ensure'],
-    enable => $profile_mon_nrpe['enable'],
-  }
-
-  $profile_mon_disks = hiera('profile::mon::disks',{})
+  $nrpe_disks = hiera('nrpe::disks',{})
   
   nrpe::disks { 'default':
-    warn_value => $profile_mon_disks['warn_value'],
-    crit_value => $profile_mon_disks['crit_value'],
+    warn_value => $nrpe_disks['warn_value'],
+    crit_value => $nrpe_disks['crit_value'],
   }
 
-  $profile_mon_ldap = hiera('profile::mon::ldap',{})
+  $nrpe_ldap = hiera('nrpe::ldap',{})
   
   nrpe::ldap { 'default':
-    host       => $profile_mon_ldap['host'],
-    basedn     => $profile_mon_ldap['basedn'],
-    binddn     => $profile_mon_ldap['binddn'],
-    pass       => $profile_mon_ldap['pass'],
-    warn_value => $profile_mon_ldap['warn_value'],
-    crit_value => $profile_mon_ldap['crit_value'],
+    host       => $nrpe_ldap['host'],
+    basedn     => $nrpe_ldap['basedn'],
+    binddn     => $nrpe_ldap['binddn'],
+    pass       => $nrpe_ldap['pass'],
+    warn_value => $nrpe_ldap['warn_value'],
+    crit_value => $nrpe_ldap['crit_value'],
   }
 
-  $profile_mon_load = hiera('profile::mon::load',{})
+  $nrpe_load = hiera('nrpe::load',{})
   
   nrpe::load { 'default':
-    warn_value => $profile_mon_load['warn_value'],
-    crit_value => $profile_mon_load['crit_value'],
+    warn_value => $nrpe_load['warn_value'],
+    crit_value => $nrpe_load['crit_value'],
   }
 
-  $profile_mon_procs = hiera('profile::mon::procs',{})
+  $nrpe_procs = hiera('nrpe::procs',{})
 
   nrpe::procs { 'default':
-    warn_value => $profile_mon_procs['warn_value'],
-    crit_value => $profile_mon_procs['crit_value'],
+    warn_value => $nrpe_procs['warn_value'],
+    crit_value => $nrpe_procs['crit_value'],
   }
 
-  $profile_mon_users = hiera('profile::mon::users',{})
+  $nrpe_redis = hiera('nrpe::redis',{})
+
+  nrpe::redis { 'default':
+    warn_value => $nrpe_redis['warn_value'],
+    crit_value => $nrpe_redis['crit_value'],
+  }
+
+  $nrpe_service = hiera('nrpe::service',{})
+
+  nrpe::service { 'default':
+    ensure => $nrpe_service['ensure'],
+    enable => $nrpe_service['enable'],
+  }
+
+  $nrpe_users = hiera('nrpe::users',{})
 
   nrpe::users { 'default':
-    warn_value => $profile_mon_users['warn_value'],
-    crit_value => $profile_mon_users['crit_value'],
+    warn_value => $nrpe_users['warn_value'],
+    crit_value => $nrpe_users['crit_value'],
+  }
+
+  $nrpe_varnish = hiera('nrpe::varnish',{})
+
+  nrpe::varnish { 'default':
+    warn_value => $nrpe_varnish['warn_value'],
+    crit_value => $nrpe_varnish['crit_value'],
   }
 
 }
