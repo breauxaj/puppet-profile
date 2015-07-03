@@ -18,6 +18,20 @@ class profile::mon::nrpe {
     crit_value => $nrpe_disks['crit_value'],
   }
 
+  $nrpe_httpd = hiera('nrpe::httpd',{})
+  
+  nrpe::httpd { 'default':
+    warn_value => $nrpe_httpd['warn_value'],
+    crit_value => $nrpe_httpd['crit_value'],
+  }
+
+  $nrpe_java = hiera('nrpe::java',{})
+  
+  nrpe::java { 'default':
+    warn_value => $nrpe_java['warn_value'],
+    crit_value => $nrpe_java['crit_value'],
+  }
+
   $nrpe_ldap = hiera('nrpe::ldap',{})
   
   nrpe::ldap { 'default':
@@ -34,6 +48,27 @@ class profile::mon::nrpe {
   nrpe::load { 'default':
     warn_value => $nrpe_load['warn_value'],
     crit_value => $nrpe_load['crit_value'],
+  }
+
+  $nrpe_mongodb = hiera('nrpe::mongodb',{})
+
+  nrpe::mongodb { 'default':
+    warn_value => $nrpe_mongodb['warn_value'],
+    crit_value => $nrpe_mongodb['crit_value'],
+  }
+
+  $nrpe_mysql = hiera('nrpe::mysql',{})
+
+  nrpe::mysql { 'default':
+    warn_value => $nrpe_mysql['warn_value'],
+    crit_value => $nrpe_mysql['crit_value'],
+  }
+
+  $nrpe_nodejs = hiera('nrpe::nodejs',{})
+
+  nrpe::nodejs { 'default':
+    warn_value => $nrpe_nodejs['warn_value'],
+    crit_value => $nrpe_nodejs['crit_value'],
   }
 
   $nrpe_procs = hiera('nrpe::procs',{})
@@ -55,6 +90,13 @@ class profile::mon::nrpe {
   nrpe::service { 'default':
     ensure => $nrpe_service['ensure'],
     enable => $nrpe_service['enable'],
+  }
+
+  $nrpe_supervisor = hiera('nrpe::supervisor',{})
+
+  nrpe::supervisor { 'default':
+    warn_value => $nrpe_supervisor['warn_value'],
+    crit_value => $nrpe_supervisor['crit_value'],
   }
 
   $nrpe_users = hiera('nrpe::users',{})
