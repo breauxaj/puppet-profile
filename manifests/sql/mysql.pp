@@ -1,13 +1,18 @@
 class profile::sql::mysql {
-  include ::nrpe
-
-  $profile_mon_mysql = hiera('profile::mon::mysql',{})
-
-  nrpe::mysql { 'default':
-    warn_value => $profile_mon_mysql['warn_value'],
-    crit_value => $profile_mon_mysql['crit_value'],
-  }
-  
   hiera_include('profile::sql::mysql', '')
-  
+
+  $mariadb_bootstrap = hiera('mariadb::bootstrap',{})
+
+  mariadb::bootstrap { 'default':
+    ensure => $mariadb_bootstrap['ensure'],
+    enable => $mariadb_bootstrap['enable'],
+  }
+
+  $mariadb_service = hiera('mariadb::service',{})
+
+  mariadb::service { 'default':
+    ensure => $mariadb_service['ensure'],
+    enable => $mariadb_service['enable'],
+  }
+
 }
