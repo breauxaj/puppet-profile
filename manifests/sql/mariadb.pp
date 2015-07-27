@@ -1,5 +1,5 @@
 class profile::sql::mariadb {
-  hiera_include('profile::sql::mariadb', '')
+  include ::mariadb
 
   $mariadb_bootstrap = hiera('mariadb::bootstrap',{})
 

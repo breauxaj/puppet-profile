@@ -1,5 +1,5 @@
 class profile::ops::supervisor {
-  hiera_include('profile::ops::supervisor', '')
+  include ::supervisor
 
   $supervisor_hook = hiera('supervisor::hook',{})
   create_resources('supervisor::hook',$supervisor_hook)

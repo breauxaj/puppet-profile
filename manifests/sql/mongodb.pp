@@ -1,5 +1,5 @@
 class profile::sql::mongodb {
-  hiera_include('profile::sql::mongodb', '')
+  include ::mongodb
 
   $mongodb_config = hiera('mongodb::config',{})
 
