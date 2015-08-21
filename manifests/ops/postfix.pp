@@ -1,6 +1,12 @@
 class profile::ops::postfix {
   include ::postfix
 
+  $postfix_aliases = hiera('postfix::aliases',{})
+
+  postfix::aliases { 'default':
+    root_alias => $postfix_aliases['root_alias'],
+  }
+
   $postfix_config = hiera('postfix::config',{})
 
   postfix::config { 'default':
@@ -8,12 +14,6 @@ class profile::ops::postfix {
     myorigin   => $postfix_config['myorigin'],
   }
 
-  $postfix_aliases = hiera('postfix::aliases',{})
-
-  postfix::aliases { 'default':
-    root_alias => $postfix_aliases['root_alias'],
-  }
-  
   $postfix_service = hiera('postfix::service',{})
 
   postfix::service { 'default':
