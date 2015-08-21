@@ -1,5 +1,5 @@
 class profile::cache::varnish {
-  hiera_include('profile::cache::varnish', '')
+  include ::varnish
 
   $varnish_secret = hiera('varnish::secret', {})
   

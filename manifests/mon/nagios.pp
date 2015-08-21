@@ -1,5 +1,11 @@
 class profile::mon::nagios {
-  include ::nagios
-  include ::nagios::plugins
+  hiera_include('profile::mon::nagios', '')
+
+  $nagios_service = hiera('nagios::service',{})
+
+  nagios::service { 'default':
+    ensure => $nagios_service['ensure'],
+    enable => $nagios_service['enable'],
+  }
 
 }

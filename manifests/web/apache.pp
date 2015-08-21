@@ -47,6 +47,12 @@ class profile::web::apache {
     requestheaders => $apache_header['requestheaders'],
   }
 
+  $apache_legacy = hiera('apache::legacy',{})
+
+  apache::legacy { 'default':
+    includes => $apache_legacy['includes'],
+  }
+
   $apache_service = hiera('apache::service',{})
 
   apache::service { 'default':

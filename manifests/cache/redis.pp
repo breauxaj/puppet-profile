@@ -1,5 +1,5 @@
 class profile::cache::redis {  
-  hiera_include('profile::cache::redis', '')
+  include ::redis
 
   $redis_config = hiera('redis::config',{})
   

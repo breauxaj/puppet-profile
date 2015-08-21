@@ -10,4 +10,20 @@ class profile::web::tomcat {
     java_opts     = $tomcat_config['java_opts'],
   }
 
+  $tomcat_instance = hiera('tomcat::instance',{})
+
+  tomcat::instance { 'default':
+    owner         => $tomcat_instance['owner'],
+    group         => $tomcat_instance['group'],
+    catalina_home => $tomcat_instance['catalina_home'],
+    catalina_base => $tomcat_instance['catalina_base'],
+  }
+
+  $tomcat_service = hiera('tomcat::service',{})
+
+  tomcat::service { 'default':
+    ensure => $tomcat_service['ensure'],
+    enable => $tomcat_service['enable'],
+  }
+
 }
