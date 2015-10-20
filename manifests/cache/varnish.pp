@@ -1,12 +1,6 @@
 class profile::cache::varnish {
   include ::varnish
 
-  $varnish_secret = hiera('varnish::secret', {})
-  
-  varnish::secret { 'default':
-    key => $varnish_secret['key'],
-  }
-
   $varnish_service = hiera('varnish::service',{})
 
   varnish::service { 'default':
