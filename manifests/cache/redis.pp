@@ -5,10 +5,6 @@ class profile::cache::redis {
   create_resources('redis::config',$redis_config)
 
   $redis_service = hiera('redis::service',{})
-  
-  redis::service { 'default':
-    ensure => $redis_service['ensure'],
-    enable => $redis_service['enable'],
-  }
+  create_resources('redis::service',$redis_service)
 
 }
